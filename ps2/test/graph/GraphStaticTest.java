@@ -33,6 +33,32 @@ public class GraphStaticTest {
                 Collections.emptySet(), Graph.empty().vertices());
     }
     
-    // TODO test other vertex label types in Problem 3.2
+     @Test
+    public void testEmptyVerticesEmpty() {
+        assertEquals("expected empty() graph to have no vertices",
+                Collections.emptySet(), Graph.empty().vertices());
+    }
+
+    @Test
+    public void testEmptyGraphEdgesEmpty() {
+        assertEquals("expected empty() graph to have no edges",
+                Collections.emptySet(), Graph.empty().edges());
+    }
+
+    @Test
+    public void testEmptyGraphIsEmpty() {
+        assertTrue("expected empty() graph to be empty", Graph.empty().isEmpty());
+    }
+
+    @Test
+    public void testEmptyGraphVertexCountZero() {
+        assertEquals("expected empty() graph to have zero vertices", 0, Graph.empty().vertexCount());
+    }
+
+    @Test
+    public void testEmptyGraphEdgeCountZero() {
+        assertEquals("expected empty() graph to have zero edges", 0, Graph.empty().edgeCount());
+    }
+
     
 }

@@ -1,45 +1,59 @@
-/* Copyright (c) 2015-2016 MIT 6.005 course staff, all rights reserved.
- * Redistribution of original or derived work requires permission of course staff.
- */
-package graph;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-/**
- * Tests for ConcreteEdgesGraph.
- * 
- * This class runs the GraphInstanceTest tests against ConcreteEdgesGraph, as
- * well as tests for that particular implementation.
- * 
- * Tests against the Graph spec should be in GraphInstanceTest.
- */
 public class ConcreteEdgesGraphTest extends GraphInstanceTest {
-    
+
     /*
      * Provide a ConcreteEdgesGraph for tests in GraphInstanceTest.
      */
-    @Override public Graph<String> emptyInstance() {
+    @Override
+    public Graph<String> emptyInstance() {
         return new ConcreteEdgesGraph();
     }
-    
+
     /*
      * Testing ConcreteEdgesGraph...
      */
-    
+
     // Testing strategy for ConcreteEdgesGraph.toString()
     //   TODO
-    
-    // TODO tests for ConcreteEdgesGraph.toString()
-    
+
+    @Test
+    public void testConcreteEdgesGraphToString() {
+        Graph<String> graph = emptyInstance();
+        graph.add("A");
+        graph.add("B");
+        graph.set("A", "B", 3);
+
+        String expected = "A -> B [3]";
+        assertEquals("toString should represent the graph structure", expected, graph.toString());
+    }
+
+    // TODO other tests for ConcreteEdgesGraph.toString()
+
     /*
      * Testing Edge...
      */
-    
+
     // Testing strategy for Edge
     //   TODO
-    
-    // TODO tests for operations of Edge
-    
+
+    @Test
+    public void testEdgeToString() {
+        Edge<String> edge = new Edge<>("A", "B", 2);
+
+        String expected = "A -> B [2]";
+        assertEquals("toString should represent the edge", expected, edge.toString());
+    }
+
+    @Test
+    public void testSetWeight() {
+        Edge<String> edge = new Edge<>("A", "B", 2);
+        edge.setWeight(5);
+
+        assertEquals("Edge weight should be updated to 5", 5, edge.getWeight());
+    }
+
+    // TODO other tests for operations of Edge
+
 }

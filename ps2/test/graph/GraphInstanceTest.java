@@ -41,6 +41,56 @@ public abstract class GraphInstanceTest {
                 Collections.emptySet(), emptyInstance().vertices());
     }
     
-    // TODO other tests for instance methods of Graph
+    @Test
+    public void testAddVertex() {
+        Graph<String> graph = emptyInstance();
+        String vertex = "A";
+
+        graph.addVertex(vertex);
+
+        assertTrue("graph should contain the added vertex", graph.vertices().contains(vertex));
+    }
+
+    @Test
+    public void testAddEdge() {
+        Graph<String> graph = emptyInstance();
+        String vertex1 = "A";
+        String vertex2 = "B";
+
+        graph.addVertex(vertex1);
+        graph.addVertex(vertex2);
+        graph.addEdge(vertex1, vertex2);
+
+        assertTrue("graph should contain the added edge", graph.edges().contains(new Edge<>(vertex1, vertex2)));
+    }
+
+    @Test
+    public void testRemoveVertex() {
+        Graph<String> graph = emptyInstance();
+        String vertex = "A";
+
+        graph.addVertex(vertex);
+        graph.removeVertex(vertex);
+
+        assertFalse("graph should not contain the removed vertex", graph.vertices().contains(vertex));
+    }
+
+    @Test
+    public void testRemoveEdge() {
+        Graph<String> graph = emptyInstance();
+        String vertex1 = "A";
+        String vertex2 = "B";
+
+        graph.addVertex(vertex1);
+        graph.addVertex(vertex2);
+        graph.addEdge(vertex1, vertex2);
+        graph.removeEdge(vertex1, vertex2);
+
+        assertFalse("graph should not contain the removed edge", graph.edges().contains(new Edge<>(vertex1, vertex2)));
+    }
+
+    // ... (other tests)
+
+}
     
 }
